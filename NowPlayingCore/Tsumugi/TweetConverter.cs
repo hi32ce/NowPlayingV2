@@ -13,6 +13,8 @@ namespace NowPlayingCore.Tsumugi
         public static string SongInfoToString(string pattern, SongInfo songinfo)
         {
             var npstr = pattern;
+            npstr = npstr.Replace("$TitleUrlEncoded", Uri.EscapeUriString(songinfo.Title));
+            npstr = npstr.Replace("$TitleArtistUrlEncoded", Uri.EscapeUriString(songinfo.Title + ' ' + songinfo.Artist));
             npstr = npstr.Replace("$Title", songinfo.Title);
             npstr = npstr.Replace("$AlbumArtist", songinfo.AlbumArtist);
             npstr = npstr.Replace("$Album", songinfo.Album);
